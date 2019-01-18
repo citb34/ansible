@@ -1,0 +1,22 @@
+- name: DEMO FOR vars from play 
+  hosts: all
+  vars:
+    URL: play.google.com
+    location:
+       - hyderabad
+       - banglore
+    credentials:
+       raju: raju123
+       ramu: ramu123
+  tasks:
+    - name: Access and Print variable from Play 
+      debug: 
+        msg: URL = {{URL}} ### In ansible you can access a variable using {{  }} double flower paranthesis
+
+    - name: Acccess a list variable 
+      debug:
+        msg: Location = {{location[0]}}
+
+    - name: Access a dictionary 
+      debug:
+        msg: Password of Raju user is {{credentials.raju}} 

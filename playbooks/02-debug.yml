@@ -1,0 +1,6 @@
+- name: Printing using debug module
+  hosts: all
+  tasks:
+    - name: Print Hello Message 
+      debug:
+        msg: Hello
