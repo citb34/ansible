@@ -1,0 +1,8 @@
+- name: Print variable from command line
+  hosts: all
+  tasks:
+    - name: Print variable from command line 
+      debug:
+        msg: URL = {{URL}}
+  
+# ansible-playbook playbooks/06-vars-from-command-line.yml -e URL=cli.google.com 
