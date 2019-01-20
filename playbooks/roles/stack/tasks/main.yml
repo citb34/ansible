@@ -1,0 +1,36 @@
+- name: Install Web Server 
+  package:
+    name: httpd
+    state: present
+
+- name: Copy proxy config file
+  copy:
+    src: studentapp.conf
+    dest: /etc/httpd/conf.d/studentapp.conf
+
+- name: Copy index.html file
+  copy:
+    src: index.html
+    dest: /var/www/html/index.html
+
+- name: Restart service httpd
+  service:
+    name: httpd
+    state: restarted
+
+- name: Install Java
+  package:
+    name: java
+    state: present
+
+- name: Add application user
+  user:
+    name: "{{APP_USER}}"
+
+- name: Download and extract tomcat
+  unarchive:
+    src: "{{TOMCAT_URL}}"
+    dest: "{{APP_HOME}}"
+    remote_src: yes
+  become_user: "{{APP_USER}}"
+  

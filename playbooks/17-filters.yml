@@ -1,0 +1,7 @@
+- name: Demo on filters
+  hosts: all
+  vars:
+    TOMCAT_VERSION: 8.0.37
+    VERSION: "{{ TOMCAT_VERSION.split('.')[0] }}"
+  tasks:
+    - debug: msg="{{VERSION}}"
