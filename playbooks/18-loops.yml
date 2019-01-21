@@ -1,0 +1,23 @@
+- name: Demo on loops for a list
+  hosts: all
+  tasks:
+    - name: Demo on loop
+      debug:
+        msg: "{{ item }}"
+      loop:
+        - value1
+        - value2 
+
+- name: Demo on loops for a dictionary
+  hosts: all
+  vars:
+    marks:
+      - name: raju
+        score: 80
+      - name: ramu
+        score: 90
+  tasks:
+    - name: Demo on loop
+      debug:
+        msg: "Student Name = {{ item.name }}, Student Score = {{item.score}}"
+      loop: "{{marks}}"

@@ -1,0 +1,14 @@
+- name: find the list of files and directories in a given directory and remove them 
+  hosts: all
+  tasks:
+    - name: Find the list of files 
+      find:
+        paths: /home/centos/demo
+        file_type: any
+      register: out 
+    
+    - name: Delete the files from the find module
+      file:
+        path: "{{item.path}}"
+        state: absent
+      loop: "{{out.files}}"
